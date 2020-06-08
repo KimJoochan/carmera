@@ -137,29 +137,21 @@
     <div id="map" style="width:500px;height:400px;"></div>
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=65f3bbf9d90033b543d466c88bd9c2c5"></script>
     <script>
-        var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+        var mapContainer = document.getElementById('map'), // 지도의 중심좌표
             mapOption = {
-                center: new kakao.maps.LatLng(37.502, 127.026581), // 지도의 중심좌표
-                level: 4 // 지도의 확대 레벨
+                center: new kakao.maps.LatLng(33.451475, 126.570528), // 지도의 중심좌표
+                level: 3 // 지도의 확대 레벨
             };
 
         var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-        var position = new kakao.maps.LatLng(33.450701, 126.570667);
 
-        // 마커를 생성합니다
+        // 지도에 마커를 표시합니다 
         var marker = new kakao.maps.Marker({
-            position: position,
-            map:map
+            map: map,
+            position: new kakao.maps.LatLng(33.450701, 126.570667)
         });
 
-        // 아래 코드는 위의 마커를 생성하는 코드에서 clickable: true 와 같이
-        // 마커를 클릭했을 때 지도의 클릭 이벤트가 발생하지 않도록 설정합니다
-        // marker.setClickable(true);
-
-        // 마커를 지도에 표시합니다.
-        marker.setMap(map);
-        // 커스텀 오버레이에 표시할 내용입니다     
-        // HTML 문자열 또는 Dom Element 입니다 
+        
         var content = '<div class="overlaybox">' +
             '    <div class="boxtitle">금주 영화순위</div>' +
             '    <div class="first">' +
@@ -193,15 +185,24 @@
             '        </li>' +
             '    </ul>' +
             '</div>';
-        var customOverlay = new kakao.maps.CustomOverlay({
-            position: position,
+
+        // 마커 위에 커스텀오버레이를 표시합니다
+        // 마커를 중심으로 커스텀 오버레이를 표시하기위해 CSS를 이용해 위치를 설정했습니다
+        var overlay = new kakao.maps.CustomOverlay({
             content: content,
-            map:map
+            map: map,
+            position: marker.getPosition()
         });
+
+        // 마커를 클릭했을 때 커스텀 오버레이를 표시합니다
         kakao.maps.event.addListener(marker, 'click', function() {
-            // 커스텀 오버레이를 지도에 표시합니다
-            customOverlay.setMap(map);
+            overlay.setMap(map);
         });
+
+        // 커스텀 오버레이를 닫기 위해 호출되는 함수입니다 
+        function closeOverlay() {
+            overlay.setMap(null);
+        }
 
     </script>
 </body>
