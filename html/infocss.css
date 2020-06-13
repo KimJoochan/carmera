@@ -1,0 +1,127 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+ul,
+li {
+    list-style: none;
+}
+
+img {
+    border: none;
+}
+
+#wraps {
+    width: 700px;
+    height: auto;
+    float: left;
+    position: relative;
+
+}
+#map{
+    width: 700px;
+    height: 350px;
+    float: left;
+}
+.wrap {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    background-color: white;
+    position: relative;
+    display: none;
+}
+.cir {
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    background-color: cyan;
+    text-align: center;
+}
+.tit {
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+}
+/*demo css*/
+.mask{
+    width: 100%;
+    height: auto;
+    float: left;
+    overflow: hidden;
+}
+.demo_bot{
+    width: 300%;
+    height: 150px;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+}
+.demo_bot>li{
+    flex-grow: 1;
+    height: 100%;
+    float: left;
+    box-sizing: border-box;
+    position: relative;
+}
+.thr{
+    width: 100%;
+    height: 130px;
+    display: flex;
+    padding-top: 20px;
+    box-sizing: border-box;
+    flex-direction: row;
+}
+.thr>li{
+    flex-grow: 1;
+    height: 100%;
+    text-align: center;
+}
+.thr>li.mid{
+    flex-grow: 2;
+    background-color: beige;
+    color: #333;
+}
+/*배너*/
+.but{
+    width: 100%;
+    height: 30px;
+    position: absolute;
+    bottom: 0;
+    z-index: 9;
+}
+.but>li{
+    position: absolute;
+    width: 30px;
+    height: 100%;
+    cursor: pointer;
+}
+.but>li.lef{
+    left: 20px;
+}
+.but>li.rig{
+    right: 20px;
+}
+/*각섹턴 세부사항*/
+.topText{
+    width: 100%;
+    height: 30px;
+    border-bottom: 1px solid cyan;
+    box-sizing: border-box
+}
+span{
+    float: left;
+}
+.cnt{
+    margin-left: 20px
+}
+
+.cnt.val{
+    margin: 0;
+}
+.lis{
+    float: right;
+    margin-right: 20px;
+}

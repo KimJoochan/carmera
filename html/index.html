@@ -1,329 +1,104 @@
 <!doctype html>
 
 <html>
-
-<head>
+	<head>
     <title>Page Title</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1.0">
-    <style>
-        .wrap {
-            position: absolute;
-            left: 0;
-            bottom: 40px;
-            width: 288px;
-            height: 132px;
-            margin-left: -144px;
-            text-align: left;
-            overflow: hidden;
-            font-size: 12px;
-            font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;
-            line-height: 1.5;
-        }
-
-        .wrap * {
-            padding: 0;
-            margin: 0;
-        }
-
-        .wrap .info {
-            width: 286px;
-            height: 120px;
-            border-radius: 5px;
-            border-bottom: 2px solid #ccc;
-            border-right: 1px solid #ccc;
-            overflow: hidden;
-            background: #fff;
-        }
-
-        .wrap .info:nth-child(1) {
-            border: 0;
-            box-shadow: 0px 1px 2px #888;
-        }
-
-        .info .title {
-            padding: 5px 0 0 10px;
-            height: 30px;
-            background: #eee;
-            border-bottom: 1px solid #ddd;
-            font-size: 18px;
-            font-weight: bold;
-        }
-
-        .info .close {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            color: #888;
-            width: 17px;
-            height: 17px;
-            background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png');
-        }
-
-        .info .close:hover {
-            cursor: pointer;
-        }
-
-        .info .body {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .info .desc {
-            position: relative;
-            margin: 13px 0 0 90px;
-            height: 75px;
-        }
-
-        .desc .ellipsis {
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
-
-        .desc .jibun {
-            font-size: 11px;
-            color: #888;
-            margin-top: -2px;
-        }
-
-        .info .img {
-            position: absolute;
-            top: 6px;
-            left: 5px;
-            width: 73px;
-            height: 71px;
-            border: 1px solid #ddd;
-            color: #888;
-            overflow: hidden;
-        }
-
-        .info:after {
-            content: '';
-            position: absolute;
-            margin-left: -12px;
-            left: 50%;
-            bottom: 0;
-            width: 22px;
-            height: 12px;
-            background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')
-        }
-
-        .info .link {
-            color: #5085BB;
-        }
-
-
-
-        .overlaybox {
-            position: relative;
-            width: 360px;
-            height: 350px;
-            background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/box_movie.png') no-repeat;
-            padding: 15px 10px;
-        }
-
-        .overlaybox div,
-        ul {
-            overflow: hidden;
-            margin: 0;
-            padding: 0;
-        }
-
-        .overlaybox li {
-            list-style: none;
-        }
-
-        .overlaybox .boxtitle {
-            color: #fff;
-            font-size: 16px;
-            font-weight: bold;
-            background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/arrow_white.png') no-repeat right 120px center;
-            margin-bottom: 8px;
-        }
-
-        .overlaybox .first {
-            position: relative;
-            width: 247px;
-            height: 136px;
-            background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/thumb.png') no-repeat;
-            margin-bottom: 8px;
-        }
-
-        .first .text {
-            color: #fff;
-            font-weight: bold;
-        }
-
-        .first .triangle {
-            position: absolute;
-            width: 48px;
-            height: 48px;
-            top: 0;
-            left: 0;
-            background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/triangle.png') no-repeat;
-            padding: 6px;
-            font-size: 18px;
-        }
-
-        .first .movietitle {
-            position: absolute;
-            width: 100%;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.4);
-            padding: 7px 15px;
-            font-size: 14px;
-        }
-
-        .overlaybox ul {
-            width: 247px;
-        }
-
-        .overlaybox li {
-            position: relative;
-            margin-bottom: 2px;
-            background: #2b2d36;
-            padding: 5px 10px;
-            color: #aaabaf;
-            line-height: 1;
-        }
-
-        .overlaybox li span {
-            display: inline-block;
-        }
-
-        .overlaybox li .number {
-            font-size: 16px;
-            font-weight: bold;
-        }
-
-        .overlaybox li .title {
-            font-size: 13px;
-        }
-
-        .overlaybox ul .arrow {
-            position: absolute;
-            margin-top: 8px;
-            right: 25px;
-            width: 5px;
-            height: 3px;
-            background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/updown.png') no-repeat;
-        }
-
-        .overlaybox li .up {
-            background-position: 0 -40px;
-        }
-
-        .overlaybox li .down {
-            background-position: 0 -60px;
-        }
-
-        .overlaybox li .count {
-            position: absolute;
-            margin-top: 5px;
-            right: 15px;
-            font-size: 10px;
-        }
-
-        .overlaybox li:hover {
-            color: #fff;
-            background: #d24545;
-        }
-
-        .overlaybox li:hover .up {
-            background-position: 0 0px;
-        }
-
-        .overlaybox li:hover .down {
-            background-position: 0 -20px;
-        }
-
-    </style>
+    <link rel="stylesheet/less" type="text/css" href="css/com.less" />
+    <link rel="stylesheet/less" type="text/css" href="css/style.less" />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.11.1/less.min.js"></script>
 </head>
 
 <body>
-    <div id="map" style="width:500px;height:400px;"></div>
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=65f3bbf9d90033b543d466c88bd9c2c5"></script>
-    <script>
-        var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-            mapOption = {
-                center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-                level: 3 // 지도의 확대 레벨
-            };
+    <header>
+        <nav>
+            <h1 id="logo">logo</h1>
+            <ul id="nav">
+                <li><a href="howuse.html">이용안내</a></li>
+                <li><a href="">요금안내</a></li>
+                <li><a href="">고객센터</a></li>
+                <li><a href="">이벤트/혜택</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section id="mask">
+        <ul>
+            <li><img src="img/ban1.png"></li>
+            <li><img src="img/ban2.png"></li>
+        </ul>
 
-        var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-
-        // 마커를 표시할 위치입니다 
-        var position = new kakao.maps.LatLng(33.450701, 126.570667);
-
-        // 마커를 생성합니다
-        var marker = new kakao.maps.Marker({
-            position: position,
-            clickable: true // 마커를 클릭했을 때 지도의 클릭 이벤트가 발생하지 않도록 설정합니다
-        });
-
-        // 아래 코드는 위의 마커를 생성하는 코드에서 clickable: true 와 같이
-        // 마커를 클릭했을 때 지도의 클릭 이벤트가 발생하지 않도록 설정합니다
-        // marker.setClickable(true);
-
-        // 마커를 지도에 표시합니다.
-        marker.setMap(map);
-
-        // 마커를 클릭했을 때 마커 위에 표시할 인포윈도우를 생성합니다
-        var iwContent = '<div class="overlaybox">' +
-            '<div class="close" onclick="closeOverlay()" title="닫기"></div>' +
-            '    <div class="boxtitle">금주 영화순위</div>' +
-            '    <div class="first">' +
-            '        <div class="triangle text">1</div>' +
-            '        <div class="movietitle text">드래곤 길들이기2</div>' +
-            '    </div>' +
-            '    <ul>' +
-            '        <li class="up">' +
-            '            <span class="number">2</span>' +
-            '            <span class="title">명량</span>' +
-            '            <span class="arrow up"></span>' +
-            '            <span class="count">2</span>' +
-            '        </li>' +
-            '        <li>' +
-            '            <span class="number">3</span>' +
-            '            <span class="title">해적(바다로 간 산적)</span>' +
-            '            <span class="arrow up"></span>' +
-            '            <span class="count">6</span>' +
-            '        </li>' +
-            '        <li>' +
-            '            <span class="number">4</span>' +
-            '            <span class="title">해무</span>' +
-            '            <span class="arrow up"></span>' +
-            '            <span class="count">3</span>' +
-            '        </li>' +
-            '        <li>' +
-            '            <span class="number">5</span>' +
-            '            <span class="title">안녕, 헤이즐</span>' +
-            '            <span class="arrow down"></span>' +
-            '            <span class="count">1</span>' +
-            '        </li>' +
-            '    </ul>' +
-            '</div>';
-
-        // 인포윈도우를 생성합니다
-        var customOverlay = new kakao.maps.CustomOverlay({
-            position: position,
-            content: iwContent,
-            xAnchor: 0.3,
-            yAnchor: 0.91
-        });
-
-        // 마커에 클릭이벤트를 등록합니다
-        kakao.maps.event.addListener(marker, 'click', function() {
-            // 마커 위에 인포윈도우를 표시합니다
-            customOverlay.setMap(map);
-        });
-
-        function closeOverlay() {
-            overlay.setMap(null);
-        }
-
-    </script>
-</body>
-
-</html>
+    </section>
+    <section class="point">
+        <div class="wrap">
+            <h3 class="title">간편한 예약 시스템</h3>
+            <div class="box"></div>
+            <div class="sideBox">
+                <h3 class="sideTitle">누구나 손쉽게</h3>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type </p>
+            </div>
+        </div>
+    </section>
+    <section class="point">
+        <div class="wrap sec">
+            <h3 class="title">부담없는 대여비</h3>
+            <div class="box"></div>
+            <div class="sideBox">
+                <h3 class="sideTitle">누구나 손쉽게</h3>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type </p>
+            </div>
+        </div>
+    </section>
+    <section class="point">
+        <div class="wrap">
+            <h3 class="title">24시간 언제나</h3>
+            <div class="box"></div>
+            <div class="sideBox">
+                <h3 class="sideTitle">누구나 손쉽게</h3>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type </p>
+            </div>
+        </div>
+    </section>
+    <section class="detail mount">
+        <h3 class="title">많은 이용자</h3>
+        <ul id="icon">
+            <li>
+                <div class="img"><img src="img/heart.png"></div>
+                <h4 class="number">300</h4>
+            </li>
+            <li>
+                <div class="img"><img src="img/user.png"></div>
+                <h4 class="number">250</h4>
+            </li>
+            <li>
+                <div class="img"><img src="img/satis.png"></div>
+                <h4 class="number">300</h4>
+            </li>
+            <li>
+                <div class="img"><img src="img/share.png"></div>
+                <h4 class="number">300</h4>
+            </li>
+        </ul>
+    </section>
+    <section class="detail indus">
+        <h3 class="title">우리의 사업</h3>
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </section>
+    <section id="event">
+        <h3 class="title">이벤트</h3>
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </section>
+    <footer></footer>
+</body></html>

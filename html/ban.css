@@ -1,0 +1,76 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.tit{
+    width: 100%;
+    height:30px;
+    line-height: 30px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.demo_bot{
+    width: auto;
+    height: 200px;
+}
+.demo_bot>li{
+    width: 460px;
+    height: 100%;
+    float: left;
+    border: 1px solid black;
+    box-sizing: border-box;
+    position: relative;
+}
+.thr{
+    width: 460px;
+    height: 130px;
+    display: flex;
+    padding-top: 20px;
+    box-sizing: border-box;
+    flex-direction: row;
+}
+.thr>li{
+    flex-grow: 1;
+    height: 100%;
+}
+.thr>li.mid{
+    flex-grow: 2;
+}
+/*배너*/
+.but{
+    width: 100%;
+    height: 30px;
+    position: absolute;
+    bottom: 0;
+}
+.but>li{
+    position: absolute;
+    width: 30px;
+    height: 100%;
+    cursor: pointer;
+}
+.but>li.lef{
+    left: 20px;
+}
+.but>li.rig{
+    right: 20px;
+}
+/*각섹턴 세부사항*/
+.topText{
+    width: 100%;
+    height: 30px;
+    border-bottom: 1px solid cyan;
+    box-sizing: border-box
+}
+.cnt{
+    float: left;
+    margin-left: 20px
+}
+.cnt.val{
+    margin: 0;
+}
+.lis{
+    float: right;
+    margin-right: 20px;
+}
